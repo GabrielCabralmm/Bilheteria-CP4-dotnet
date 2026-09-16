@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Bilheteria.API/Bilheteria.API.csproj" />
+  <Project Path="Bilheteria.Tests/Bilheteria.Tests.csproj" />
+</Solution>
