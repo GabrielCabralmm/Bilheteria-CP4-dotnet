@@ -30,7 +30,7 @@ namespace Bilheteria.API.Domain.Entities
         [Column("c_sinopse")]
         public string? Sinopse { get; set; }
 
-        [Column("c_em_cartaz")]
+        [Column("c_em_cartaz", TypeName = "NUMBER(1)")]
         public bool EmCartaz { get; set; }
 
         [JsonIgnore]

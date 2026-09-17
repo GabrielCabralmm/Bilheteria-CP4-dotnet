@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Bilheteria.API": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:62258;http://localhost:62259"
+    }
+  }
+}

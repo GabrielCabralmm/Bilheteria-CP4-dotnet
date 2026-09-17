@@ -7,15 +7,21 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Bilheteria.Tests.Integration
 {
-    public class PedidoControllerTests : IClassFixture<CustomWebApplicationFactory>
+    public class PedidoControllerTests : IDisposable
     {
-        private readonly HttpClient _client;
         private readonly CustomWebApplicationFactory _factory;
+        private readonly HttpClient _client;
 
-        public PedidoControllerTests(CustomWebApplicationFactory factory)
+        public PedidoControllerTests()
         {
-            _factory = factory;
-            _client = factory.CreateClient();
+            _factory = new CustomWebApplicationFactory();
+            _client = _factory.CreateClient();
+        }
+
+        public void Dispose()
+        {
+            _client.Dispose();
+            _factory.Dispose();
         }
 
         private async Task<int> SemearSessaoAsync()

@@ -4,13 +4,21 @@ using Bilheteria.API.Application.Dtos;
 
 namespace Bilheteria.Tests.Integration
 {
-    public class FilmeControllerTests : IClassFixture<CustomWebApplicationFactory>
+    public class FilmeControllerTests : IDisposable
     {
+        private readonly CustomWebApplicationFactory _factory;
         private readonly HttpClient _client;
 
-        public FilmeControllerTests(CustomWebApplicationFactory factory)
+        public FilmeControllerTests()
         {
-            _client = factory.CreateClient();
+            _factory = new CustomWebApplicationFactory();
+            _client = _factory.CreateClient();
+        }
+
+        public void Dispose()
+        {
+            _client.Dispose();
+            _factory.Dispose();
         }
 
         [Fact]
