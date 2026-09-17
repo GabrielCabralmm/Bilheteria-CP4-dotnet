@@ -44,10 +44,12 @@ namespace Bilheteria.API.Infrastructure.Data.Repositories
 
         public async Task<bool> AssentoOcupadoAsync(int sessaoId, string fileira, int numeroAssento)
         {
-            return await _context.Ingresso.AnyAsync(x =>
+            var quantidade = await _context.Ingresso.CountAsync(x =>
                 x.SessaoId == sessaoId &&
                 x.Fileira == fileira &&
                 x.NumeroAssento == numeroAssento);
+
+            return quantidade > 0;
         }
 
         public async Task<int> ContarIngressosVendidosAsync(int sessaoId)

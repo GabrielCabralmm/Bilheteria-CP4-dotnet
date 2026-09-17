@@ -15,5 +15,14 @@ namespace Bilheteria.API.Infrastructure.Data
         public DbSet<PedidoEntity> Pedido { get; set; }
         public DbSet<ItemPedidoEntity> ItemPedido { get; set; }
         public DbSet<IngressoEntity> Ingresso { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<FilmeEntity>()
+                .Property(f => f.EmCartaz)
+                .HasConversion<int>();
+        }
     }
 }
